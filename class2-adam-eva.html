@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Apple (weight){
+                    this.weight=weight;
+                    this.getWeight=function(){
+                        console.log("Cân nặng ban đầu của quả táo là "+ this.weight + "đv");;
+                    }
+                    this.decreaseWeight=function(){
+                       if(weight>0){
+                        this.weight--;
+                        console.log("Cân nặng sau khi quả táo bị ăn là " + this.weight + "đv");
+                       }   
+                    }
+                }
+
+        function Human(name, gender, weight, word){
+            this.name = name;
+            this.gender=gender;
+            this.weight=weight;
+            this.word=word;
+
+            this.checkGender = function(gender){
+                if(this.gender==true){
+                    console.log( this.name + " Giới tính nam");
+                } else {
+                    console.log(this.name +" Giới tính nữ");
+                }
+            };
+
+            this.checkWeight = function(weight){
+                    console.log(this.name + " cân nặng ban đầu là: "+ this.weight );;
+            };
+
+            this.sayWord=function(){
+                console.log(this.name + " said: "+ this.word);
+            }
+
+            this.eatApple=function(){
+                apple.decreaseWeight();
+                this.weight++;
+                console.log("After eating apple "+ this.name + " weight is " + this.weight);
+            }
+
+
+        }
+
+        let apple = new Apple(10);
+       
+
+        let adam = new Human("Adam", true, 50, ["Hello", " How are you ?" ]);
+        let eva = new Human ("Eva", false, 45, ["Hi", " I'm ok"]);
+
+        adam.checkGender();
+        eva.checkGender();
+
+        adam.checkWeight();
+        eva.checkWeight();
+
+        adam.sayWord();
+        eva.sayWord();
+
+        adam.eatApple();
+        eva.eatApple();        
+       
+    </script>
+</body>
+</html>
