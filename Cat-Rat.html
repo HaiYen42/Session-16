@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Rat(name,weight,speed,status){
+            this.name= name;
+            this.weight=weight;
+            this.speed=speed;
+            this.status=status;
+
+
+            this.getStatus=function(){
+                if(this.status==true){
+                    console.log("Chuột đang sống");
+                }else {
+                    console.log("Chuột đã die");
+                }
+            }
+            this.sound=function(){
+                if(this.status==true){
+                    console.log("Chít, Chít");
+                } else{
+                    console.log("Đã die");
+                }
+            }
+
+
+        }
+
+        function Cat(name,weight,speed,status){
+            this.name=name;
+            this.weight=weight;
+            this.speed=speed;
+            this.status=status;
+
+            this.sound=function(){
+                if(status==true){
+                    console.log("Meo, Meo");
+                }
+            }
+            this.catchRat=function(){
+                if(cat.speed>rat.speed){
+                    console.log(this.name + "Bắt được chuột rồi yay");
+                } else{
+                    console.log(this.name + "Ko đuổi kịp rồi :(");
+                }
+            }
+            this.eatRat=function(){
+                if((rat.status==true)&&(this.speed>rat.speed)){
+                    console.log("Yeh, Đã ăn được");
+                    this.weight+=rat.weight;
+                    console.log("Cân nặng sau khi ăn chuột là " + this.weight);
+
+                } else{
+                    console.log("Hẹn lần sau");
+                }
+            }   
+        
+
+        }
+
+        let rat= new Rat("Jerry",1,45,true);
+        let cat= new Cat("Tom",5,50,true);
+
+        rat.getStatus();
+        rat.sound();
+        cat.sound();
+        cat.catchRat();
+        cat.eatRat();
+    </script>
+</body>
+</html>
