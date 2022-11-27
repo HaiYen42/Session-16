@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Remote(model){
+            this.model=model;
+            this.switchChanel=function(television,name){
+                television.changeChanel(name);
+                // console.log("Tivi đã được chuyển sang kênh" + name);
+                return television.changeChanel;
+            }
+            this.UpVolume=function(television){
+                television.upVolume();
+            }
+            this.DownVolume=function(television){
+                television.downVolume();
+            }
+            
+        }
+
+        function Tivi (name, chanel,volume,status){
+            this.name=name;
+            this.chanel=chanel;
+            this.volume=volume;
+            this.status=status;
+
+            this.turnOn=function(){
+                this.status=true;
+                console.log( this.name+ " đang được bật");
+            }
+
+            this.turnOff=function(){
+                this.status=false;
+                console.log("Tivi đã tắt");
+            }
+
+            this.changeChanel=function(name){
+                if(this.status==true){
+                    console.log(this.name+ " đã được chuyển sang kênh " + name);
+                }else{
+                    console.log("Vui lòng bật tivi lên");
+                }
+            }
+            this.downVolume=function(){
+                if(this.volume>1){
+                    this.volume--;
+                    console.log("Âm lượng sau giảm là "+ this.volume);
+                }else{
+                    console.log("Tiếng của bạn đã bị tắt");
+                }
+
+            this.upVolume=function(){
+                this.volume++;
+                console.log("Âm lượng sau tăng là "+ this.volume);
+            }
+            }
+        }
+
+        let tivi=new Tivi("Tivi",1,25,true);
+        let remote= new Remote("");
+        let tiviSamsung= new Tivi ("TiviSamSung",2,35,true)
+
+        tivi.turnOn();
+        tivi.turnOff();
+        tivi.turnOn()
+        tivi.changeChanel(7);
+        tivi.downVolume();
+        tivi.upVolume();
+        remote.switchChanel(tivi,2)
+        remote.UpVolume(tivi)
+        remote.DownVolume(tivi)
+        
+        remote.switchChanel(tiviSamsung,3)
+        tiviSamsung.turnOn();
+        remote.DownVolume(tiviSamsung);
+    </script>
+</body>
+</html>

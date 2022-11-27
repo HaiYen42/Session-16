@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Remote(model){
+            this.model=model;
+            this.switchChanel=function(television,name){
+                television.changeChanel(name);
+                // console.log("Tivi đã chuyển sang kênh " + name);
+                return television.chanel;
+            }
+            this.upVolumeRemote=function(television){
+                television.upVolume()
+                return television.volume;
+            }
+            }
+            
+        function Tivi(chanel,volume,status){
+            this.chanel=chanel;
+            this.volume=volume;
+            this.status=status;
+            this.turnOn=function(){
+                this.status=true;
+                console.log("Tivi đã được bật");
+                return this.status;
+            }
+            this.turnOff=function(){
+                this.status=false;
+                console.log("Tivi đã tắt");
+                return this.status;
+            }
+
+            this.changeChanel=function(name){
+                if(this.status==true){
+                    this.chanel=name;
+                    console.log("Tivi đã chuyển sang kênh " + name);
+                    return this.chanel;
+                }else{
+                    console.log("Vui lòng bật tivi ");
+                }
+            }
+            this.upVolume=function(){
+                this.volume++;
+                console.log("Âm lượng của bạn sau khi tăng là "+ this.volume);
+                return this.volume;
+            }
+            this.downVolume=function(){
+                if(this.volume>1){
+                    this.volume--;
+                    console.log("Âm lượng sau khi giảm là "+ this.volume);
+                    return this.volume;
+                } else {
+                    console.log("Tivi đã tắt tiếng");
+                    return this.volume;
+                }
+            }
+              
+        }
+
+        let remote= new Remote("123");
+        let tivi= new Tivi("1",1, false);
+        let tiviSamsung= new Tivi("",10,true);
+
+             
+        console.log("Kênh đang xem là " +tivi.chanel); 
+        console.log("Âm lượng hiện thời là "+ tivi.volume);
+        console.log(tivi);
+        tivi.turnOn();
+        tivi.turnOff();
+        tivi.changeChanel(2);
+        tivi.turnOn();
+        tivi.changeChanel(2);
+        // console.log(tivi.changeChanel(2));
+        tivi.upVolume();
+        tivi.upVolume();
+        tivi.downVolume();
+        tivi.downVolume();
+        tivi.downVolume();
+        tivi.downVolume();
+
+        remote.switchChanel(tivi, 30);
+        remote.switchChanel(tiviSamsung,10)
+
+    </script>
+</body>
+</html>
